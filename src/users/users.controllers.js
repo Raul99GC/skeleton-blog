@@ -1,5 +1,5 @@
 const uuid = require('uuid')
-
+const {hashPassword} = require('../utils/crypt')
 
 const userDB = [{
     "id": "7a1e9631-6c61-4d7b-9725-a4821f6f97bf",
@@ -43,6 +43,80 @@ const getUserById = (id) => {
 
 const createNewUser = (data) => {
     const newUser = {
-
+        id: uuid.v4(),
+        first_name: data.first_name,
+        last_name: data.last_name,
+        emal: data.email,
+        password: hashPassword(data.password),
+        phone: data.phone ? data.phone : "", //unico
+        birthday_date: data.birthday_date,
+        rol: 'normal',
+        profile_image: data.profile_image ? data.profile_image : '',
+        country: data.country,
+        is_active: true,
+        verified: false
     }
+    userDB.push(newUser)
+    return newUser
+}
+
+const editUser = (id, data) => {
+    const index = userDB.findIndex((user) => user.id === id)
+    if (index !== -1) {
+        userDB[index] ={ 
+            id: id,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email,
+            password: userDB[index].password,
+            phone: data.phone, //unico
+            birthday_date: data.birthday_date,
+            rol: data.rol,
+            profile_image: data.profile_image,
+            country: data.country,
+            is_active: data.is_active,
+            verified: false,
+        }
+        return userDB[index]
+    } else {
+        const newUser = {
+            id: id,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email,
+            password: userDB[index].password,
+            phone: data.phone, //unico
+            birthday_date: data.birthday_date,
+            rol: data.rol,
+            profile_image: data.profile_image,
+            country: data.country,
+            is_active: data.is_active,
+            verified: false,
+        }
+        return createNewUser(newUser)
+    }
+}
+
+const deleteUser = (id) => {
+    const index = userDB.findIndex((user) => user.id === id )
+    if(index !== -1) {
+        userDB.splice(index, 1)
+        return true
+    } else {
+        return false
+    }
+}
+
+const getUserByEmail = (email) => {
+    const data = userDB.filter((user) => user.email === email)
+    return data.length ? data[0] : false
+}
+
+module.exports = {
+    getAllUsers,
+    getUserById,
+    createNewUser,
+    editUser,
+    deleteUser,
+    getUserByEmail
 }
