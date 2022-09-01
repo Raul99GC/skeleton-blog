@@ -1,4 +1,4 @@
-const newUser = {
+const newUser = [{
     "id": "7a1e9631-6c61-4d7b-9725-a4821f6f97bf",
     "first_name": "Raul",
     "last_name": "Cordoba",
@@ -12,5 +12,16 @@ const newUser = {
     "country": "mexico",
     "is_active": true,
     "verified": false
+},
+{
+    "id": "7a1e9631-6c61-4d7b-9725-a4821f6f97bf1",
+    "first_name": "emma",
+},
+{
+    "id": "7a1e9631-6c61-4d7b-9725-a4821f6f97bf2",
+    "first_name": "juan",
 }
-console.log(Object.keys(newUser).length)
+]
+
+
+console.log(Object.keys(newUser[0]).length)

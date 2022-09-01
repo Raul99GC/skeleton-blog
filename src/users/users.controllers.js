@@ -8,7 +8,6 @@ const userDB = [{
     "email": "raulcg@academlo.com",
     "phone": "1234567890",
     "password": "$2b$10$TNGcRFonQH98rVqFaBVfpOEEv2Xcu5ej14tWqKim3z3L6Tr.ZIaqC",
-    "phone": "1234567890",
     "birthday_date": "22/10/2000",
     "rol": "admin",
     "profile_image": "",
@@ -29,7 +28,20 @@ const userDB = [{
     "country": "mexico",
     "is_active": true,
     "verified": false
-}]
+},{ 
+    "id": "d175d7f9-ccdd-40a4-b90a-fccb33b2c067",
+    "first_name": "Sara",
+    "last_name": "Kick",
+    "email": "sara@academlo.com",
+    "password": "$2b$10$TNGcRFonQH98rVqFaBVfpOEEv2Xcu5ej14tWqKim3z3L6Tr.ZIaqC",
+    "phone": "1234567890",
+    "birthday_date": "22/10/2000",
+    "rol": "admin",
+    "profile_image": "",
+    "country": "mexico",
+    "is_active": true,
+    "verified": false
+  }]
 
 const getAllUsers = () => {
     return userDB

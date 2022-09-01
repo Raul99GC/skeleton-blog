@@ -15,10 +15,11 @@ const getById = (req, res) => {
     if(data) {
         res.status(200).json(data)
     } else {
-        res.status(404),json({message: `El usuario con id ${id} no existe`})
+        res.status(404).json({message: `El usuario con id ${id} no existe`})
     }
 }
 
+    // ? /me
 const getMyUser = (req, res) => {
     const id = req.user.id
     const data = userControllers.getUserById(id)
@@ -52,12 +53,11 @@ const edit = (req, res) => {
         !data.is_active
     ) {
         return res.status(400).json({
-            message: "All fields must be completed",
+            message: "All fields must be completed dfghnjmkjhgf",
             fields: {
               first_name: "string",
               last_name: "string",
               email: "examle@examle.com",
-              password: "string",
               phone: "+521231231230",
               rol: "normal",
               profile_image: "example.com/img/example.png",
@@ -75,6 +75,7 @@ const edit = (req, res) => {
     }
 }
 
+    // ? /me
 const editMyUser = (req, res) => {
     const id = req.user.id
     const data = req.body
@@ -85,25 +86,22 @@ const editMyUser = (req, res) => {
         !data.last_name ||
         !data.email ||
         !data.phone ||
-        !data.rol ||
         !data.profile_image ||
         !data.birthday_date ||
         !data.country ||
         !data.is_active
     ) {
         return res.status(400).json({
-            message: "All fields must be completed",
+            message: "All fields must be completed my",
             fields: {
-              first_name: "string",
-              last_name: "string",
-              email: "examle@examle.com",
-              password: "string",
-              phone: "+521231231230",
-              rol: "normal",
-              profile_image: "example.com/img/example.png",
-              birthday_date: "DD/MM/YYYY",
-              country: "string",
-              is_active: true
+                first_name: "string",
+                last_name: "string",
+                email: "examle@examle.com",
+                phone: "+521231231230",
+                profile_image: "example.com/img/example.png",
+                birthday_date: "DD/MM/YYYY",
+                country: "string",
+                is_active: true
             },
         })
     } else {
@@ -124,10 +122,11 @@ const remove = (req, res) => {
     if(data) {
         return res.status(204)
     } else {
-        return res.status(400).sjon({message: 'Invalid ID'})
+        return res.status(400).json({message: 'Invalid ID my'})
     }
 }
 
+    // ? /me
 const removeMyUser = (req, res) => {
     const id = req.user.id
     const response = userControllers.deleteUser(id)
@@ -146,7 +145,7 @@ const removeMyUser = (req, res) => {
 const register = (req, res) => {
     const data = req.body
     if( !data) {
-        return res.status(400).sjon({message: 'Missing data'})
+        return res.status(400).json({message: 'Missing data'})
     } else if(
         !data.first_name ||
         !data.last_name ||
@@ -175,6 +174,7 @@ const register = (req, res) => {
     }
     
 }
+
 
 
 module.exports = {
